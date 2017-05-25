@@ -1,5 +1,6 @@
 package kr.hs.lia318e_mirim.dialogboxtest;
 
+import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button butDialog = (Button) findViewById(R.id.but_dialog);
         butDialog.setOnClickListener(this); // MainActivity class 내에서 감시자 역할
         butDialog = (Button)findViewById(R.id.but_dialog);
-        butDialog.set
+        butDialog.setOnClickListener(this);
     } // end of MainActivity
 
     @Override
@@ -26,7 +27,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dialog.setTitle("첫번째 Dialog");
         dialog.setIcon(R.drawable.got7_jinyoung_icon);
         // dialog.setMessage("여기는 메시지를 쓰는 곳입니다.");
-        dialog.setItems(itemarr, new ontr);
+        dialog.setItems(itemarr, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                butDialog.setText(itemarr[i]);
+            }
+        });
         dialog.setPositiveButton("Ok", null); // null => 이벤트 발생x
         dialog.show(); // 꼭 설정하기
     }
