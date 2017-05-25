@@ -1,5 +1,6 @@
 package kr.hs.lia318e_mirim.dialogboxtest;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("첫번째 Dialog");
+        dialog.setIcon(R.drawable.got7_jinyoung_icon);
+        dialog.setMessage("여기는 메시지를 쓰는 곳입니다.");
+        dialog.setPositiveButton("Ok", null); // null => 이벤트 발생x
+        dialog.show(); // 꼭 설정하기
     }
 }
