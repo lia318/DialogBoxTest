@@ -27,12 +27,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dialog.setTitle("첫번째 Dialog");
         dialog.setIcon(R.drawable.got7_jinyoung_icon);
         // dialog.setMessage("여기는 메시지를 쓰는 곳입니다.");
-        dialog.setItems(itemarr, new DialogInterface.OnClickListener() {
+        /*dialog.setItems(itemarr, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 butDialog.setText(itemarr[i]);
             }
-        });
+        });*/
+        // 라디오 버튼 목록
+        dialog.setSingleChoiceItems(itemarr, 0, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                butDialog.setText(itemarr[i]);
+            }
+        }); // (배열이름, 배열 인덱스 번호, 이벤트)
         dialog.setPositiveButton("Ok", null); // null => 이벤트 발생x
         dialog.show(); // 꼭 설정하기
     }
